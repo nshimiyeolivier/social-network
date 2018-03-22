@@ -1,7 +1,7 @@
 <?php
 session_start();
 // connexion à la base des données
-  require('config/database.php');
+  // require('config/database.php');
 
 // appeler la page des fonctions
   require('includes/functions.php');
