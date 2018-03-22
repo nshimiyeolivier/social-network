@@ -1,7 +1,7 @@
 <?php
 
 // une fonction pour verifier si les champs sont bien rempli
-if(! defined('not_empty')){
+if(!function_exists('not_empty')){
   function not_empty($fields = []){
     if(count($fields) != 0){
       foreach($fields as $field){
@@ -15,7 +15,7 @@ if(! defined('not_empty')){
 }
 
 // une fonction pour verifier si le pseudo ou mod depasse est déjà utilisé
-if(! defined('is_already-in_use')){
+if(!function_exists('is_already-in_use')){
   function is_already_in_use ($field, $value, $table){
     global $db;
 
@@ -31,6 +31,14 @@ if(! defined('is_already-in_use')){
     $q->closeCursor();
 
     return $count;
+  }
+}
+
+// une fonction pour informer l'utilisateur que l'inscription a reussi et qu'il puisse verifier sa boite de reception
+if(!function_exists('set_flash')){
+  function set_flash($message, $type = 'info'){
+    $_SESSION['notification']['message'] = $message;
+    $_SESSION['notification']['type'] = $type;
   }
 }
 

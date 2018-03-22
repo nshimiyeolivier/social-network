@@ -1,11 +1,11 @@
 <?php $title = "Register"; ?> <!-- title name -->
-  <?php include("./partials/_header.php"); ?>
+  <?php include('partials/_header.php'); ?>
       <div id="main-content">
           <div class="container">
-            <h1> Become a mamber </h1>
+            <h1 class="lead"> Become a mamber </h1>
 
-<!-- s'il ya des erreurs! -->
-<?php include('partials/_errors.php'); ?> 
+<!-- appeller un fichier errors actif au moment ou il ya des erreurs! -->
+<?php include('partials/_errors.php'); ?>
 
             <form method="POST" class="well col-md-6">
 <!-- name field  -->

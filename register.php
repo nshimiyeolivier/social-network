@@ -1,4 +1,5 @@
 <?php
+session_start();
 // connexion à la base des données
   require('config/database.php');
 
@@ -67,9 +68,8 @@
 
             mail($to, $subject, $content, $headers);
 
-            //informer l'utilisateur pour qu'il verifie sa boite de reception
-
-            echo "The activation mail has been sent to your E-mail";
+            //informer l'utilisateur que l'inscription a reussi et qu'il puisse verifier sa boite de reception
+            set_flash("The activation mail has been sent to your E-mail", 'success');
           }
 
       }else{
