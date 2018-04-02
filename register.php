@@ -1,82 +1,70 @@
 <?php
-session_start();
-// connexion à la base des données
-  // require('config/database.php');
+include('config/database.php');
+include('includes/functions.php');
+include('includes/constants.php');
+// verify if the submit button has been clicked
+ if(isset($_POST['register'])){
+   // and if all fields have been well completed
+   if(not_empty(['name', 'pseudo', 'email', 'password', 'password_confirm'])){
 
-// appeler la page des fonctions
-  require('includes/functions.php');
+     $errors = [];
 
-  // appeler la page des fonctions
-    require('includes/constants.php');
+     extract($_POST);
+     // verify if the pseudo has minimum 3 letters
+     if(mb_strlen($pseudo) < 3){
+       $erros[] = "Very short Pseudo, (it must contain minimum 3 letters!) ";
+     }
+
+     // verify if the email is valid
+     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+       $errors[] = "Invalid Email!";
+     }
+
+     // verify if the passwor has minimum 6 letters
+     if(mb_strlen($password) < 6){
+       $erros[] = "Very short Password, (it must contain minimum 6 letters!) ";
+     }else{
+       if($password != $password_confirm){
+         $errors[] = "Your passwords are not equivalent!";
+       }
+     }
+
+     //verify if in table USERS there is no the same pseudo
+     if(is_already_in_use('pseudo', $pseudo, 'users')){
+       $errors[] = "This pseudo is not available(It has been used by another member!)";
+     }
+
+     //verify if in table Email there is no the same email
+     if(is_already_in_use('email', $email, 'users')){
+       $errors[] = "This email is not available(It is already in use!)";
+     }
+
+     if(count($errors) == 0){
+    // envoie d'un mail d'activation
+    $to = $email;
+    $subject = WEBSITE_NAME . "ACTIVATION DE COMPTE";
+    $token = sha1($pseudo.$email.$password);
+
+    ob_start();
+    require('templates/emails/activation.tmpl.php');
+    $content = ob_get_clean();
+
+    $headers = 'MIME-Version: 1.0' . "\r\n";
+    $headers = 'content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    mail($to, $subject, $content, $headers);
+
+    //informer l'utilisateur pour q'il puisse verifier sa boite de reception
+
+    echo "Mail d'activation envoyé";
+         }
 
 
-      // si le formulaire a ete soumis
-      if(isset($_POST['register'])){
+   }else{
+     $errors[] = "Try to fill all required fields Please!";
+   }
+ }
 
-          // si tous les champs ont ete remplis
-            if(not_empty(['name', 'pseudo', 'email', 'password', 'password_confirm'])){
+ ?>
 
-          $errors = [];
-
-          extract($_POST);
-
-      // si le pseudo contien plus de trois chat-ractere
-          if(mb_strlen($pseudo) < 3){
-            $errors[] = " Your pseudo must contain min 3 charcters";
-          }
-
-      // si le bon mail et valide
-          if(! filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errors[] = "Invalid e-mail adress!";
-          }
-
-      // si le mot de passe contient aumoins 6 charactere
-          if(mb_strlen($password) < 6){
-            $errors[] = "Your password must contain min 6 characters!";
-          }else{
-            // si la confirmation du mot depasse concorde au precedent
-            if($password != $password_confirm){
-              $errors[] = "password does not match! retry to fill your password";
-            }
-          }
-
-      // si le pseudo existe deja dans la base des donnees
-          if(is_already_in_use('pseudo', $pseudo, 'users')){
-            $errors[] = "This pseudo is not available, it is alredy in use!";
-          }
-
-      // si le mail existe déjà dans la base des donnees
-          if(is_already_in_use('email', $email, 'users')){
-            $errors[] = "This email has been used!";
-          }
-
-      //s'il n'y a pas d'erreur
-          if(count($errors) == 0){
-            // envoie d'un mail d'activation
-            $to = $email;
-
-            $subject = WEBSITE_NAME. " - ACTIVATION DE COMPTE";
-
-            $token = sha1($pseudo.$email.$password);
-
-            ob_start();
-            require('templates/emails/activation.template.php');
-            $content = ob_get_clean();
-
-            $headers = 'MIME-Version: 1.0' . "\r\n";
-            $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-            mail($to, $subject, $content, $headers);
-
-            //informer l'utilisateur que l'inscription a reussi et qu'il puisse verifier sa boite de reception
-            set_flash("The activation mail has been sent to your E-mail", 'success');
-          }
-
-      }else{
-
-      $errors[] = "Fill in requested fields!";
-      }
-    }
-      ?>
-
-<?php require('views/register.view.php'); ?>
+<?php include('views/register.views.php'); ?>
