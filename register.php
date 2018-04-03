@@ -12,7 +12,7 @@ include('includes/constants.php');
      extract($_POST);
      // verify if the pseudo has minimum 3 letters
      if(mb_strlen($pseudo) < 3){
-       $erros[] = "Very short Pseudo, (it must contain minimum 3 letters!) ";
+       $errors[] = "Very short Pseudo, (it must contain minimum 3 letters!) ";
      }
 
      // verify if the email is valid
@@ -22,7 +22,7 @@ include('includes/constants.php');
 
      // verify if the passwor has minimum 6 letters
      if(mb_strlen($password) < 6){
-       $erros[] = "Very short Password, (it must contain minimum 6 letters!) ";
+       $errors[] = "Very short Password, (it must contain minimum 6 letters!) ";
      }else{
        if($password != $password_confirm){
          $errors[] = "Your passwords are not equivalent!";
@@ -39,6 +39,7 @@ include('includes/constants.php');
        $errors[] = "This email is not available(It is already in use!)";
      }
 
+// in case there is no errors the form can be submited and the user will be informed
      if(count($errors) == 0){
     // envoie d'un mail d'activation
     $to = $email;

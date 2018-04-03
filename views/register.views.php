@@ -4,7 +4,10 @@
 <?php include('partials/_nav.php'); ?>
 
     <div class="container">
-    <h1> Become our member </h1>
+    <h1> Become a member </h1>
+
+  <?php include('partials/_errors.php'); ?>
+
       <form method="POST" class="well col-md-6">
         <!--name field  -->
         <div class="form-group">
