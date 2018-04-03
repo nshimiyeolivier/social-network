@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include('config/database.php');
 include('includes/functions.php');
 include('includes/constants.php');
@@ -57,9 +60,10 @@ include('includes/constants.php');
 
     //informer l'utilisateur pour q'il puisse verifier sa boite de reception
 
-    echo "Mail d'activation envoyé";
-         }
+    set_flash("Mail d'activation envoyé", 'success');
 
+      redirect('index.php');
+         }
 
    }else{
      $errors[] = "Try to fill all required fields Please!";

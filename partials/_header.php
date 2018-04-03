@@ -26,3 +26,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
   </head>
+
+  <?php include('partials/_nav.php'); ?>
+  
+    <?php include('partials/_flash.php'); ?>

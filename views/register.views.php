@@ -1,10 +1,9 @@
 <?php $title= "Subscribe"; ?>
 <!-- we call the constants page before the _header one because it contain some informatons that mast be included before calling the head page. -->
 <?php include('partials/_header.php'); ?>
-<?php include('partials/_nav.php'); ?>
 
     <div class="container">
-    <h1> Become a member </h1>
+    <h1 class="lead"> Become a member </h1>
 
   <?php include('partials/_errors.php'); ?>
 
