@@ -1,5 +1,14 @@
 <?php
 
+// une fonction qui securise les champs des formulaire pour eviter que l'utilisateur puisse entre les scripts.
+if(!function_exists('e')){
+  function e($string){
+    if($string){
+      return htmlspecialchars($string);
+    }
+  }
+}
+
 // une fonction qui verifie si tout les champs ont belle bien remplis
 if(!function_exists('not_empty')){
   function not_empty($fields=[]){
@@ -50,4 +59,35 @@ if(!function_exists('set_flash')){
    }
  }
 
+// deux fonctions suivant pour garde les donnees tapes dans une formulaire en memoire
+
+if(!function_exists('save_in_put_data')){
+  function save_in_put_data(){
+    foreach($_POST as $key => $value){
+      if(strpos($key, 'password') === false){
+        $_SESSION['input'][$key] = $value;
+      }
+    }
+  }
+}
+
+if(!function_exists('get_in_put')){
+  function get_in_put($key){
+    if(!empty($_SESSION['input'][$key])){
+      return $_SESSION['input'][$key];
+    }else{
+      return null;
+    }
+
+  }
+}
+
+// une fonction permettant de supprimer les donnees gardee au nuveau d'une session
+if(!function_exists('clear_input_data')){
+  function clear_input_data(){
+    if(isset($_SESSION['input'])){
+      $_SESSION['input'] = [];
+    }
+  }
+}
 ?>

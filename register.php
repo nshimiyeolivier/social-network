@@ -60,14 +60,19 @@ include('includes/constants.php');
 
     //informer l'utilisateur pour q'il puisse verifier sa boite de reception
 
-    set_flash("Mail d'activation envoyé", 'success');
+    set_flash("The activation mail has been sent!", 'success');
 
       redirect('index.php');
-         }
+    } else{
+      save_in_put_data();
+    }
 
    }else{
      $errors[] = "Try to fill all required fields Please!";
+     save_in_put_data();
    }
+ }else{
+   clear_input_data();
  }
 
  ?>

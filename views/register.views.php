@@ -11,22 +11,22 @@
         <!--name field  -->
         <div class="form-group">
           <label class="control-label" for="name"> Name: </label>
-          <input type="text" class="form-control" id="name" name="name" required="required"/>
+          <input type="text" value="<?= get_in_put('name') ?>" class="form-control" id="name" name="name"/>
         </div>
         <!-- nick name field  -->
         <div class="form-group">
           <label class="control-label" for="nickname"> Nickname: </label>
-          <input type="text" class="form-control" id="nickname" name="nickname" required="required"/>
+          <input type="text" value="<?= get_in_put('nickname') ?>" class="form-control" id="nickname" name="nickname" required="required"/>
         </div>
         <!--pseudo field  -->
         <div class="form-group">
           <label class="control-label" for="pseudo"> Pseudo: </label>
-          <input type="text" class="form-control" id="pseudo" name="pseudo" required="required"/>
+          <input type="text" value="<?= get_in_put('pseudo') ?>" class="form-control" id="pseudo" name="pseudo" required="required"/>
         </div>
         <!--email field  -->
         <div class="form-group">
           <label class="control-label" for="email"> E-mail: </label>
-          <input type="email" class="form-control" id="email" name="email" required="required"/>
+          <input type="email" value="<?= get_in_put('email') ?>" class="form-control" id="email" name="email" required="required"/>
         </div>
         <!--password field  -->
         <div class="form-group">
