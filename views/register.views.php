@@ -10,13 +10,13 @@
       <form method="POST" class="well col-md-6">
         <!--name field  -->
         <div class="form-group">
-          <label class="control-label" for="name"> Name: </label>
-          <input type="text" value="<?= get_in_put('name') ?>" class="form-control" id="name" name="name"/>
+          <label class="control-label" for="firstname"> First-name: </label>
+          <input type="text" value="<?= get_in_put('firstname') ?>" class="form-control" id="firstname" name="firstname" required="required"/>
         </div>
         <!-- nick name field  -->
         <div class="form-group">
-          <label class="control-label" for="nickname"> Nickname: </label>
-          <input type="text" value="<?= get_in_put('nickname') ?>" class="form-control" id="nickname" name="nickname" required="required"/>
+          <label class="control-label" for="lastname"> Last-name: </label>
+          <input type="text" value="<?= get_in_put('lastname') ?>" class="form-control" id="lastname" name="lastname" required="required"/>
         </div>
         <!--pseudo field  -->
         <div class="form-group">

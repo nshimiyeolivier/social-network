@@ -5,10 +5,11 @@ session_start();
 include('config/database.php');
 include('includes/functions.php');
 include('includes/constants.php');
+
 // verify if the submit button has been clicked
  if(isset($_POST['register'])){
    // and if all fields have been well completed
-   if(not_empty(['name', 'pseudo', 'email', 'password', 'password_confirm'])){
+   if(not_empty(['firstname', 'lastname', 'pseudo', 'email', 'password', 'password_confirm'])){
 
      $errors = [];
 
@@ -46,7 +47,9 @@ include('includes/constants.php');
      if(count($errors) == 0){
     // envoie d'un mail d'activation
     $to = $email;
-    $subject = WEBSITE_NAME . "ACTIVATION DE COMPTE";
+    $subject = WEBSITE_NAME . " - ACTIVATION DE COMPTE";
+    
+    sha1($password);
     $token = sha1($pseudo.$email.$password);
 
     ob_start();
@@ -62,6 +65,18 @@ include('includes/constants.php');
 
     set_flash("The activation mail has been sent!", 'success');
 
+// une requette preparé pour envoyer les infos dans la base des données
+    $q = $db -> prepare('INSERT INTO users(firstname, lastname, pseudo, email, password)
+                                VALUES(:firstname, :lastname, :pseudo, :email, :password)');
+    $q->execute([
+      'firstname' => $firstname,
+      'lastname' => $lastname,
+      'pseudo' => $pseudo,
+      'email' => $email,
+      'password' => $password,
+    ]);
+
+//diriger l'utulisateur vers la page d'accueil et y afficher le message d'alert
       redirect('index.php');
     } else{
       save_in_put_data();

@@ -23,7 +23,6 @@ if(!function_exists('not_empty')){
   }
 }
 
-
 // une fonction pour verifier si un pseudo ou mail n'est pas déjà utilise
 if(!function_exists('is_already_in_use')){
     function is_already_in_use($field, $value, $table){
@@ -50,8 +49,7 @@ if(!function_exists('set_flash')){
   }
 }
 
-
-
+// une fonction pour la redirection vers une page specifique
  if(!function_exists('redirect')){
    function redirect($page){
      header('location:' . $page);
@@ -59,8 +57,8 @@ if(!function_exists('set_flash')){
    }
  }
 
-// deux fonctions suivant pour garde les donnees tapes dans une formulaire en memoire
 
+// deux fonctions suivant pour garde les donnees tapes dans une formulaire en memoire
 if(!function_exists('save_in_put_data')){
   function save_in_put_data(){
     foreach($_POST as $key => $value){
