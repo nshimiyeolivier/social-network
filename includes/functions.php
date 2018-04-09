@@ -88,4 +88,19 @@ if(!function_exists('clear_input_data')){
     }
   }
 }
+
+
+// gerer l'etat actif de nos differents lien (menus)
+if(!function_exists('set_active')){
+  function set_active($file){
+    $page = array_pop(explode('/', $_SERVER['SCRIPT_NAME']));
+
+    if($page == $file.'.php'){
+      return "active";
+    }else{
+      return "";
+    }
+    }
+  }
+
 ?>

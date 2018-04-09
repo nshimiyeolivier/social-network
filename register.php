@@ -2,6 +2,7 @@
 
 session_start();
 
+include('filters/guest_filters.php');
 include('config/database.php');
 include('includes/functions.php');
 include('includes/constants.php');
@@ -48,8 +49,8 @@ include('includes/constants.php');
     // envoie d'un mail d'activation
     $to = $email;
     $subject = WEBSITE_NAME . " - ACTIVATION DE COMPTE";
-    
-    sha1($password);
+
+    $password = sha1($password);
     $token = sha1($pseudo.$email.$password);
 
     ob_start();

@@ -7,7 +7,7 @@
 
   <?php include('partials/_errors.php'); ?>
 
-      <form method="POST" class="well col-md-6">
+      <form data-parsley-validate method="POST" class="well col-md-6">
         <!--name field  -->
         <div class="form-group">
           <label class="control-label" for="firstname"> First-name: </label>
@@ -21,12 +21,12 @@
         <!--pseudo field  -->
         <div class="form-group">
           <label class="control-label" for="pseudo"> Pseudo: </label>
-          <input type="text" value="<?= get_in_put('pseudo') ?>" class="form-control" id="pseudo" name="pseudo" required="required"/>
+          <input data-parsley-minlength="3" type="text" value="<?= get_in_put('pseudo') ?>" class="form-control" id="pseudo" name="pseudo" required="required" />
         </div>
         <!--email field  -->
         <div class="form-group">
           <label class="control-label" for="email"> E-mail: </label>
-          <input type="email" value="<?= get_in_put('email') ?>" class="form-control" id="email" name="email" required="required"/>
+          <input data-parsley-trigger="keypress" type="email" value="<?= get_in_put('email') ?>" class="form-control" id="email" name="email" required="required"/>
         </div>
         <!--password field  -->
         <div class="form-group">
@@ -36,7 +36,7 @@
         <!--password_confirm field  -->
         <div class="form-group">
           <label class="control-label" for="password_confirm"> confirm Password: </label>
-          <input type="password" class="form-control" id="password_confirm" name="password_confirm" requirer="required"/>
+          <input data-parsley-equalto="#password" data-parsley-trigger="keypress" type="password" class="form-control" id="password_confirm" name="password_confirm" requirer="required"/>
         </div>
         <input type="submit" class="btn btn-primary"  value="Register" name="register" id="register">
 

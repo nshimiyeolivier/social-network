@@ -13,9 +13,9 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.php">Accueil</a></li>
-          <li><a href="login.php">Login</a></li>
-          <li><a href="register.php">Subscribe</a></li>
+          <li class="<?= set_active('index')?>"><a href="index.php">Home</a></li>
+          <li class="<?= set_active('login')?>"><a href="login.php">Login</a></li>
+          <li class="<?= set_active('register')?>"><a href="register.php">Subscribe</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
