@@ -9,6 +9,44 @@ if(!function_exists('e')){
   }
 }
 
+// une fonction pour recupere les donnees qui sont dans la db en session # get a session value by key
+if(!function_exists('get_session')){
+  function get_session($key){
+    if($key){
+      return !empty($_SESSION[$key])
+        ? e($_SESSION[$key])
+        : null;
+    }
+  }
+}
+
+// une fonction get avatar url
+if(!function_exists('get_avatar_url')){
+  function get_avatar_url($email){
+    return "http://gravatar.com/avatar/".md5(strtolower(trim(e($email))));
+  }
+}
+
+
+// une fonction pour recupere un utilisateur par id # find user by id
+if(!function_exists('find_user_by_id')){
+  function find_user_by_id($id){
+
+      global $db;
+
+      $q = $db->prepare('SELECT lastname, pseudo, email, city, country, twitter, github, sex, bio FROM users WHERE id = ?');
+      $q->execute([$id]);
+// current est une fonctions qui permet de recupere les donnees sans ajouter d'indice a chaque x
+      $data = current($q->fetchAll(PDO::FETCH_OBJ));
+
+      $q->closeCursor();
+
+      return $data;
+
+  }
+}
+
+
 // une fonction qui verifie si tout les champs ont belle bien remplis
 if(!function_exists('not_empty')){
   function not_empty($fields=[]){

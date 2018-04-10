@@ -32,7 +32,7 @@ include('includes/constants.php');
        $_SESSION['user_id'] = $user->id;
        $_SESSION['pseudo'] = $user->pseudo;
 
-       redirect('profile.php');
+       redirect('profile.php?id=' . $user->id);
      }else{
        set_flash('Incorrect Identifier/Password!', 'danger');
        save_in_put_data();

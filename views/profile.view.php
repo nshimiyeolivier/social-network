@@ -7,19 +7,31 @@
         <div class="col-md-6 col-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"> <?= e($_SESSION['pseudo'])?> 's profile</h3>
+              <h3 class="panel-title"> <?= e($user->pseudo)?> 's profile</h3>
             </div>
             <div class="panel-body">
-              image <br />
-              pseudo <br />
-              email
+              <?php ?>
+              <div class="row">
+                <div class="col-md-5">
+                  <img src="<?= get_avatar_url($user->email) ?>" alt="image de profil de <?= e($user->pseudo) ?>" class="img-circle">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <strong> <?= e($user->pseudo) ?> </strong> <br>
+                  <!-- mailto: permit to send email to the linked destinator -->
+                  <a href="mailto:<?= $user->email ?>"> <?=e($user->email) ?> </a>
+                </div>
+              </div>
+
             </div>
         </div>
         </div>
         <div class="col-md-6 col-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"> Mr. <?= e($_SESSION['pseudo'])?> complete your profile </h3>
+              <h3 class="panel-title"> Mr. <?= e($user->pseudo)?> complete your profile </h3>
             </div>
             <div class="panel-body">
 <!-- call the errors verification's page -->
@@ -75,10 +87,13 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="control-label" for="biography"> Biography <span class="text-danger"> * </span> </label>
-                    <textarea class="form-control" id="biography" name="biography" rows="4" cols="50"> </textarea>
+                    <textarea class="form-control" id="biography" name="biography"  rows="4" cols="50" placeholder="fill in here your Biography" > </textarea>
                   </div>
                 </div>
               </div>
+
+              <input type="submit" class="btn btn-primary"  value="SEND" name="send" id="send">
+
             </div>
         </div>
         </div>
