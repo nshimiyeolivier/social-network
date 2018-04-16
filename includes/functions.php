@@ -20,6 +20,13 @@ if(!function_exists('get_session')){
   }
 }
 
+// une fonction pour verifier si l'utilisateur est connecté
+if(!function_exists('is_logged_in')){
+  function is_logged_in(){
+    return isset($_SESSION['user_id']) || isset($_SESSION['pseudo']);
+  }
+}
+
 // une fonction get avatar url
 if(!function_exists('get_avatar_url')){
   function get_avatar_url($email){
@@ -34,10 +41,11 @@ if(!function_exists('find_user_by_id')){
 
       global $db;
 
-      $q = $db->prepare('SELECT lastname, pseudo, email, city, country, twitter, github, sex, bio FROM users WHERE id = ?');
+      $q = $db->prepare('SELECT lastname, pseudo, email, city, country, twitter, github, sex, available_for_hiring, biography FROM users WHERE id = ?');
       $q->execute([$id]);
 // current est une fonctions qui permet de recupere les donnees sans ajouter d'indice a chaque x
-      $data = current($q->fetchAll(PDO::FETCH_OBJ));
+      // $data = current($q->fetchAll(PDO::FETCH_OBJ)); // this one is used when you want to get multiples datas from you db but it's not the case here, we want to get only information from one object, user.
+      $data = $q->fetch(PDO::FETCH_OBJ);
 
       $q->closeCursor();
 

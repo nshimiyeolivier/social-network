@@ -6,7 +6,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" integrity="sha384-VI5+XuguQ/l3kUhh4knz7Hxptx47wpQbVRDnp8v7Vvuhzwn1PEYb/uvtH6KLxv6d" crossorigin="anonymous"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="libraries/parsley/parsley.min.js"></script>
-    <script src="libraries/parsley/i18n/fr.js"></script>
+    <!-- <script src="libraries/parsley/i18n/fr.js"></script> -->
     <script type="text/jscript">
       window.ParsleyValidator.setLocale('fr');
     </script>

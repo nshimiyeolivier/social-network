@@ -25,8 +25,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
+      <!--font awesome  -->
+      <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+      <!-- google fonts -->
+       <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> 
   </head>
 
   <?php include('partials/_nav.php'); ?>
-  
+
     <?php include('partials/_flash.php'); ?>

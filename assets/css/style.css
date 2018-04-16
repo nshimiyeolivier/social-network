@@ -40,3 +40,36 @@ textarea.parsley-error {
 
 
 /************************End parsley js *********************************************************/
+
+/************************Share Code CSS *********************************************************/
+
+#main-content{
+  background-color: black;
+  min-height: 550px;
+  padding-top:1em;
+  padding-left: 8px;
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+}
+
+#navi{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+#code{
+  width: 100%;
+  border: none;
+  outline: 0;
+  background-color: black;
+  color: white;
+  resize: none;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+
+
+/************************End Share Code CSS *********************************************************/

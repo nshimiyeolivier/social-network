@@ -26,7 +26,7 @@
         <!--email field  -->
         <div class="form-group">
           <label class="control-label" for="email"> E-mail: </label>
-          <input data-parsley-trigger="keypress" type="email" value="<?= get_in_put('email') ?>" class="form-control" id="email" name="email" required="required"/>
+          <input type="email" value="<?= get_in_put('email') ?>" class="form-control" id="email" name="email" required="required"/>
         </div>
         <!--password field  -->
         <div class="form-group">
