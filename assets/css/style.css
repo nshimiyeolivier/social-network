@@ -58,7 +58,6 @@ textarea.parsley-error {
   right: 10px;
 }
 
-
 #code{
   width: 100%;
   border: none;
@@ -67,7 +66,7 @@ textarea.parsley-error {
   color: white;
   resize: none;
   font-size: 14px;
-  overflow: hidden;
+  overflow:hidden;
 }
 
 
